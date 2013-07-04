@@ -23,12 +23,13 @@ function bpGetBalance(callback){
 
 	bpws.onmessage = function(evt){
 
-		var received_message = evt.data;
+		var received_message = JSON.parse(evt.data);
 
 		console.log('message received: ' + received_message);
+		console.log(received_message);
 
 		if(callback){
-			callback(received_message);
+			callback(received_message.balance);
 		}
 	};
 
