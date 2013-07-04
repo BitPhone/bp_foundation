@@ -11,6 +11,8 @@
 
 			function get_messages(){
 
+				bpGetMessages(get_messages_handler);
+
 			}
 
 			function get_new_messages(){
@@ -27,6 +29,21 @@
 				var get_balance_result_view = document.getElementById('getbalanceresult');
 
 				get_balance_result_view.innerHTML = data;
+			}
+
+			function get_messages_handler(data){
+
+				var message_list = '<ol>';
+
+				for(i=0;i<data.length;i++){
+					message_list = message_list + '<li>' + data[i].subject + '</li>';
+				}
+
+				message_list = message_list + '</ol>';
+
+				var get_messages_result_view = document.getElementById('getmessagesresult');
+
+				get_messages_result_view.innerHTML = message_list;
 			}
 
 		</script>
