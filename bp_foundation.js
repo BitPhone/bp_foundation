@@ -58,16 +58,11 @@ function bpGetBalance(callback){
 	bpws.onopen = function(){
 
 		bpws.send('getinfo');
-
-		//console.log('message sent');
 	};
 
 	bpws.onmessage = function(evt){
 
 		var received_message = JSON.parse(evt.data);
-
-		//console.log('message received: ' + received_message);
-		//console.log(received_message);
 
 		if(callback){
 			callback(received_message.balance);
