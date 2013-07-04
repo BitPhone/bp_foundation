@@ -1,1 +1,42 @@
 <!-- test_harness.html -->
+<html>
+	<head>
+		<title>bp_foundation test harness</title>
+		<script src="bp_foundation.js"></script>
+		<script>
+
+			function send_message(){
+
+			}
+
+			function get_messages(){
+
+			}
+
+			function get_new_messages(){
+
+			}
+
+			function get_balance(){
+
+				bpGetBalance(get_balance_handler);
+
+			}
+
+			function get_balance_handler(data){
+				var get_balance_result_view = document.getElementById('getbalanceresult');
+
+				get_balance_result_view.innerHTML = data;
+			}
+
+		</script>
+	</head>
+	<body>
+		<table border="1">
+			<tr><td><button onclick="send_message()">send message</button></td><td><span id="sendmessageresult"></td></tr>
+			<tr><td><button onclick="get_messages()">get messages</button></td><td><span id="getmessagesresult"></td></tr>
+			<tr><td><button onclick="get_new_messages()">get new messages</button></td><td><span id="getnewmessagesresult"></td></tr>
+			<tr><td><button onclick="get_balance()">get balance</button></td><td><span id="getbalanceresult"></td></tr>
+		</table>
+	</body>
+</html>
