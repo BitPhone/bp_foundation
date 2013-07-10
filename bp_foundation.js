@@ -3,9 +3,8 @@
 /*
 	todo:
 	bpSendMessage()
-	bpGetMessages()
+	bpReplyToMessage()
 	bpGetNewMessages()
-	bpGetBalance()
 */
 
 function bpSendMessage(recipient, subject, body, callback){
@@ -13,13 +12,14 @@ function bpSendMessage(recipient, subject, body, callback){
 	// connect to namecoin websocket
 	var bpws = new WebSocket('ws://127.0.0.1:1313');
 
-	// sending a message is a bit involved
-	// first a name must be claimed,
-	// then it must be "registered"
-	// then finally the message can be sent
-	// by transferring the name to the recipient
-
 	/*
+		sending a message is a bit involved,
+		first a name must be claimed,
+		then it must be "registered"
+		then finally the message can be sent
+		by transferring the name to the recipient
+
+		underlying namecoin methods used:
 		name_new
 		getinfo
 		(wait 12 blocks)
@@ -38,14 +38,14 @@ function bpSendMessage(recipient, subject, body, callback){
 
 		var received_message = JSON.parse(evt.data);
 
+		console.log(received_message);
+
 		// switch based on the type of message received:
 		// name_new
 		// getinfo
 		// name_firstupdate
 		// name_udpate
 
-		console.log('name_new result:');
-		console.log(received_message);
 
 		// if this was sucessful, we have to wait awhile
 		// before we can take the next step
